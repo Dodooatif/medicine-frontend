@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { FiPower, FiUser } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 
 const Header = () => {
@@ -11,6 +11,7 @@ const Header = () => {
 
   const handlelogout = () => {
     logout();
+    <Redirect to="/signin"/>
   };
 
   return (
@@ -70,7 +71,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Nav.Item>
+              {/* <Nav.Item>
                 <Link to="/signin" className="bg-dark text-white nav-link">
                   SIGN IN
                 </Link>
@@ -79,7 +80,7 @@ const Header = () => {
                 <Link to="/signup" className="bg-dark text-white nav-link">
                   SIGN UP
                 </Link>
-              </Nav.Item>
+              </Nav.Item> */}
             </>
           )}
         </Nav>

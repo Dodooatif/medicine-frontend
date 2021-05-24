@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { useHistory, useLocation, Link } from "react-router-dom";
 import { Col, Form, Button, Row } from "react-bootstrap";
-import small from "../images/small.jpg";
+import dee from "../images/dee.jpg";
 import { UserContext } from "../contexts/UserContext";
 import {PropagateLoader} from "react-spinners"
 
@@ -48,7 +48,7 @@ const SignupUserScreen = () => {
         gridTemplateColumns: "50%",
         justifyContent: "center",
         alignItems: "center",
-        backgroundImage: `url(${small})`,
+        backgroundImage: `url(${dee})`,
         backgroundPosition: "center center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",

@@ -11,10 +11,10 @@ const SigninScreen = ({ history, location }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const redirect = location.search ? location.search.split("=")[1] : "/";
+  const redirect = location.search ? location.search.split("=")[1] : "/signin";
 
   useEffect(() => {
-    if (userInfo.token) {
+    if (Object.keys(userInfo).length>0 ) {
       history.push(redirect);
     }
   }, [history, userInfo, redirect]);
@@ -51,7 +51,7 @@ const SigninScreen = ({ history, location }) => {
           justifyContent: "center",
           alignItems: "center",
           gridTemplateColumns: "1fr",
-          marginLeft: "28%",
+          marginLeft: "10%",
           gridGap: 15,
           padding: "20px",
           border: "2px solid green",

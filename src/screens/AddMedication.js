@@ -1,27 +1,38 @@
 import { Form, Button } from "react-bootstrap";
-import { useState,useContext } from "react";
+import { useState, useContext } from "react";
 import Spill from "../images/Spill.jpg";
-import {MedicationsContext} from "../contexts/MedicationsContext"
+import { UserContext } from "../contexts/UserContext";
+import axios from "axios";
 
 const AddMedication = () => {
-  const {addMedication} = useContext(MedicationsContext)
+  const { userInfo } = useContext(UserContext);
+
   const [date, setDate] = useState("");
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("");
   const [dose, setDose] = useState("");
   const [duration, setDuration] = useState("");
 
-  function handlesubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const newmedication = {
-      date,
-      name,
-      quantity,
-      dose,
-      duration,
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: userInfo.token,
+      },
     };
-   addMedication(newmedication);
-  }
+    await axios.post(
+      "https://dodoo-medicinequantity-api.herokuapp.com/api/DA/medications",
+      {
+        date,
+        name,
+        quantity,
+        dose,
+        duration,
+      },
+      config
+    );
+  };
   return (
     <div
       style={{
@@ -38,7 +49,7 @@ const AddMedication = () => {
       }}
     >
       <Form
-        onSubmit={handlesubmit}
+        onSubmit={handleSubmit}
         style={{
           display: "grid",
           width: "350px",
@@ -47,7 +58,7 @@ const AddMedication = () => {
           gridTemplateColumns: "1fr",
           gridGap: 15,
           padding: "20px",
-          marginLeft: "23%",
+          marginLeft: "12%",
           border: "2px solid black",
           borderRadius: "9px",
           backgroundImage: `url(${Spill})`,
