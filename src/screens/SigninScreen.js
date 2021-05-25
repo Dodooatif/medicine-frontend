@@ -11,7 +11,7 @@ const SigninScreen = ({ history, location }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const redirect = location.search ? location.search.split("=")[1] : "/signin";
+  const redirect = location.search ? location.search.split("=")[1] : "/medications";
 
   useEffect(() => {
     if (Object.keys(userInfo).length>0 ) {

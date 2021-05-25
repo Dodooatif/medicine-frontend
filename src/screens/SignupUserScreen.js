@@ -18,7 +18,7 @@ const SignupUserScreen = () => {
 
   const { signupUser, userInfo, } = useContext(UserContext);
 
-  const redirect = location.search ? location.search.split("=")[1] : "/signin";
+  const redirect = location.search ? location.search.split("=")[1] : "/medications";
 
   useEffect(() => {
     if (userInfo.firstname) {
