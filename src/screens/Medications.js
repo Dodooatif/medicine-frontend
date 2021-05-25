@@ -1,20 +1,12 @@
-import { useContext, useEffect } from "react";
 import { Spinner, Table } from "react-bootstrap";
-import { MedicationsContext } from "../contexts/MedicationsContext";
 import { FiEdit, FiDelete, FiEye } from "react-icons/fi";
 import small from "../images/small.jpg";
-
+import useMedications from "../hooks/useMedications";
 
 const Medications = () => {
-  const { loading, medications, getMedications } = useContext(
-    MedicationsContext
+  const { loading, error, medications } = useMedications(
+    "https://dodoo-medicinequantity-api.herokuapp.com/api/DA/medications"
   );
-
-  useEffect(() => {
-    getMedications();
-    // eslint-disable-next-line
-  }, []);
-
   return (
     <section
       style={{
@@ -29,7 +21,8 @@ const Medications = () => {
       }}
     >
       {loading && <Spinner className="text-center" animation="grow" />}
-      {medications.length > 0 ? (
+      {error && <h1>OOPS !!! Something went wrong</h1>}
+      { medications.length > 0 ? (
         <Table striped hover>
           <thead>
             <tr>
