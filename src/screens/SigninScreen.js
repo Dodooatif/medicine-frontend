@@ -34,7 +34,6 @@ const SigninScreen = ({ history, location }) => {
         height: "100vh",
         width: "100%",
         display: "grid",
-        // gridTemplateColumns: "50%",
         justifyContent: "center",
         alignItems: "center",
         backgroundImage: `url(${small})`,
